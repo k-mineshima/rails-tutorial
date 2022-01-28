@@ -63,6 +63,14 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
+    better_html (1.0.16)
+      actionview (>= 4.0)
+      activesupport (>= 4.0)
+      ast (~> 2.0)
+      erubi (~> 1.4)
+      html_tokenizer (~> 0.0.6)
+      parser (>= 2.4)
+      smart_properties
     bindex (0.8.1)
     bootsnap (1.10.2)
       msgpack (~> 1.2)
@@ -80,10 +88,19 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    erb_lint (0.1.1)
+      activesupport
+      better_html (~> 1.0.7)
+      html_tokenizer
+      parser (>= 2.7.1.4)
+      rainbow
+      rubocop
+      smart_properties
     erubi (1.10.0)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    html_tokenizer (0.0.7)
     i18n (1.9.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -186,6 +203,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    smart_properties (1.17.0)
     spring (4.0.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -230,6 +248,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  erb_lint
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
