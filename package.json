@@ -1,6 +1,10 @@
 {
   "name": "rails-tutorial",
   "private": true,
+  "scripts": {
+    "lint:prettier": "prettier --check --loglevel=warn '**/*.{js,ts,css,scss,sass}'",
+    "format:prettier": "prettier --check --write --loglevel=warn '**/*.{js,ts,css,scss,sass}'"
+  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -12,6 +16,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "prettier": "^2.5.1",
     "webpack-dev-server": "^3"
   }
 }
