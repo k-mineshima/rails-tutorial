@@ -1,6 +1,13 @@
 {
   "name": "rails-tutorial",
   "private": true,
+  "scripts": {
+    "lint:prettier": "prettier --check --loglevel=warn '**/*.{js,ts,css,scss,sass}'",
+    "lint:style": "stylelint **/*.{css,scss,sass}",
+    "format:prettier": "prettier --check --write --loglevel=warn '**/*.{js,ts,css,scss,sass}'",
+    "format:style": "stylelint --fix **/*.{css,scss,sass}",
+    "prepare": "husky install"
+  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -12,6 +19,26 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.2",
+    "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
+    "stylelint": "^14.3.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-scss": "^4.1.0",
     "webpack-dev-server": "^3"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint **/*.{js,ts}",
+    "*.{css,scss,sass}": "stylelint **/*.{css,scss,sass}",
+    "*.{js,css,scss,sass}": "prettier --check --loglevel=warn **/*.{js,ts,css,scss,sass}"
   }
 }
