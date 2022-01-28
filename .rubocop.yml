@@ -4,6 +4,9 @@ Style/Documentation:
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
 
+Bundler/OrderedGems:
+  Enabled: false
+
 AllCops:
   NewCops: enable
   Exclude:
