@@ -37,6 +37,8 @@
     "webpack-dev-server": "^3"
   },
   "lint-staged": {
+    "*.rb": "bundle exec rubocop",
+    "*.erb": "bundle exec erblint --lint-all",
     "*.{js,ts}": "eslint **/*.{js,ts}",
     "*.{css,scss,sass}": "stylelint **/*.{css,scss,sass}",
     "*.{js,css,scss,sass}": "prettier --check --loglevel=warn **/*.{js,ts,css,scss,sass}"
