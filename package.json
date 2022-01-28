@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "lint:prettier": "prettier --check --loglevel=warn '**/*.{js,ts,css,scss,sass}'",
-    "format:prettier": "prettier --check --write --loglevel=warn '**/*.{js,ts,css,scss,sass}'"
+    "lint:style": "stylelint **/*.{css,scss,sass}",
+    "format:prettier": "prettier --check --write --loglevel=warn '**/*.{js,ts,css,scss,sass}'",
+    "format:style": "stylelint --fix **/*.{css,scss,sass}"
   },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
@@ -22,7 +24,13 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
+    "postcss": "^8.4.5",
     "prettier": "^2.5.1",
+    "stylelint": "^14.3.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-scss": "^4.1.0",
     "webpack-dev-server": "^3"
   }
 }
