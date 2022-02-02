@@ -3,6 +3,10 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @posts = Post.joins(:user).select('posts.*, users.nick_name').where('posts.parent_id is NULL')
+  end
+
   def new
     @post = Post.new
   end
