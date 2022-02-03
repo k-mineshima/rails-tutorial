@@ -11,6 +11,7 @@
       <div class="buttons">
         <% if @current_user.id == @post.user_id %>
           <%= link_to("edit", edit_post_path) %>
+          <%= link_to("delete", post_path(@post), method: :delete) %>
         <% end %>
       </div>
     </div>
