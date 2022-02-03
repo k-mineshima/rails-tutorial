@@ -4,14 +4,16 @@
 </div>
 <div>
   <% @posts.each do |post| %>
-    <div class="post">
-      <div class="nickname">
-        <%= post.nick_name %>
+    <%= link_to(post) do %>
+      <div class="post">
+        <div class="nickname">
+          <%= post.nick_name %>
+        </div>
+        <div class="content">
+          <%= post.content %>
+        </div>
       </div>
-      <div class="content">
-        <%= post.content %>
-      </div>
-      <p>------------------------------------</p>
-    </div>
+    <% end %>
+    <p>------------------------------------</p>
   <% end %>
 </div>
