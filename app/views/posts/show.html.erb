@@ -1,8 +1,17 @@
 <h1>Post Detail</h1>
 <div>
+  <%= notice %>
+  <%= alert %>
   <div class="post">
-    <div class="nickname">
-      <%= @post.nick_name %>
+    <div class="post-header">
+      <div class="nickname">
+        <%= @post.nick_name %>
+      </div>
+      <div class="buttons">
+        <% if @current_user.id == @post.user_id %>
+          <%= link_to("edit", edit_post_path) %>
+        <% end %>
+      </div>
     </div>
     <div class="content">
       <%= @post.content %>

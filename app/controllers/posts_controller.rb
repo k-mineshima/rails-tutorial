@@ -27,6 +27,29 @@ class PostsController < ApplicationController
     @post = Post.joins(:user)
                 .select('posts.*, users.nick_name')
                 .find(params[:id])
+    @current_user = current_user
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+
+    # TODO: 切り出せないか調べる
+    render file: 'public/403.html', status: :forbidden if @post.user_id != current_user.id
+  end
+
+  def update
+    @post = Post.find(params[:id])
+
+    # TODO: 切り出せないか調べる
+    render file: 'public/403.html', status: :forbidden if @post.user_id != current_user.id
+
+    @post.content = post_params[:content]
+
+    if @post.save
+      redirect_to @post, notice: '更新しました'
+    else
+      redirect_to @post, alert: '更新に失敗しました'
+    end
   end
 
   private
