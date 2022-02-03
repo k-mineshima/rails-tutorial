@@ -22,6 +22,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    # TODO: ベストな書き方を調べる
+    @post = Post.joins(:user)
+                .select('posts.*, users.nick_name')
+                .find(params[:id])
+  end
+
   private
 
   def post_params
