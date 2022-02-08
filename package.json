@@ -4,9 +4,9 @@
   "scripts": {
     "lint:eslint": "eslint --ext .js --ext .ts app/javascript",
     "lint:prettier": "prettier --check --loglevel=warn '**/*.{js,ts,css,scss,sass}'",
-    "lint:style": "stylelint **/*.{css,scss,sass}",
+    "lint:style": "stylelint app/**/*.{css,scss,sass}",
     "format:prettier": "prettier --check --write --loglevel=warn '**/*.{js,ts,css,scss,sass}'",
-    "format:style": "stylelint --fix **/*.{css,scss,sass}",
+    "format:style": "stylelint --fix app/**/*.{css,scss,sass}",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -43,7 +43,7 @@
     "*.rb": "bundle exec rubocop",
     "*.erb": "bundle exec erblint --lint-all",
     "*.{js,ts}": "eslint --ext .js --ext .ts app/javascript",
-    "*.{css,scss,sass}": "stylelint **/*.{css,scss,sass}",
+    "*.{css,scss,sass}": "stylelint app/**/*.{css,scss,sass}",
     "*.{js,css,scss,sass}": "prettier --check --loglevel=warn **/*.{js,ts,css,scss,sass}"
   }
 }
