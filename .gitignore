@@ -37,3 +37,5 @@ yarn-debug.log*
 
 # intellij idea
 .idea/
+
+/vendor/bundle
