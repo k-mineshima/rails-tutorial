@@ -2,10 +2,11 @@
   "name": "rails-tutorial",
   "private": true,
   "scripts": {
+    "lint:eslint": "eslint --ext .js --ext .ts app/javascript",
     "lint:prettier": "prettier --check --loglevel=warn '**/*.{js,ts,css,scss,sass}'",
-    "lint:style": "stylelint **/*.{css,scss,sass}",
+    "lint:style": "stylelint app/**/*.{css,scss,sass}",
     "format:prettier": "prettier --check --write --loglevel=warn '**/*.{js,ts,css,scss,sass}'",
-    "format:style": "stylelint --fix **/*.{css,scss,sass}",
+    "format:style": "stylelint --fix app/**/*.{css,scss,sass}",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -13,6 +14,8 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
+    "jquery": "^3.6.0",
+    "toastr": "^2.1.4",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
@@ -39,8 +42,8 @@
   "lint-staged": {
     "*.rb": "bundle exec rubocop",
     "*.erb": "bundle exec erblint --lint-all",
-    "*.{js,ts}": "eslint **/*.{js,ts}",
-    "*.{css,scss,sass}": "stylelint **/*.{css,scss,sass}",
+    "*.{js,ts}": "eslint --ext .js --ext .ts app/javascript",
+    "*.{css,scss,sass}": "stylelint app/**/*.{css,scss,sass}",
     "*.{js,css,scss,sass}": "prettier --check --loglevel=warn **/*.{js,ts,css,scss,sass}"
   }
 }
