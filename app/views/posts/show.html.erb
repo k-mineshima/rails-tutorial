@@ -6,10 +6,10 @@
   <div class="post">
     <div class="post-header">
       <div class="nickname">
-        <%= @post.nick_name %>
+        <%= @post.user.nick_name %>
       </div>
       <div class="buttons">
-        <% if @current_user.id == @post.user_id %>
+        <% if @is_buttons_enabled %>
           <%= link_to("edit", edit_post_path) %>
           <%= link_to("delete", post_path(@post), method: :delete) %>
         <% end %>

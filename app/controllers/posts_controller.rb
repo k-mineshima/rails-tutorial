@@ -2,11 +2,12 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_post_by_id, only: %i[show edit update destroy]
+  before_action :post_forbidden_filter, only: %i[edit update destroy]
+  before_action :post_not_found_filter, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.joins(:user)
-                 .select('posts.*, users.nick_name')
-                 .where('posts.parent_id is NULL AND posts.deleted_at is NULL')
+    @posts = Post.where(parent_id: nil, deleted_at: nil).includes(:user)
   end
 
   def new
@@ -25,31 +26,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    # TODO: ベストな書き方を調べる
-    @post = Post.joins(:user)
-                .select('posts.*, users.nick_name')
-                .find(params[:id])
-    @current_user = current_user
-
-    # TODO: 切り出せないか調べる
-    render file: 'public/404.html', status: :not_found unless @post.deleted_at.nil?
+    @is_buttons_enabled = @post.user.id == current_user.id
   end
 
-  def edit
-    @post = Post.find(params[:id])
-
-    # TODO: 切り出せないか調べる
-    render file: 'public/403.html', status: :forbidden if @post.user_id != current_user.id
-    render file: 'public/404.html', status: :not_found unless @post.deleted_at.nil?
-  end
+  def edit; end
 
   def update
-    @post = Post.find(params[:id])
-
-    # TODO: 切り出せないか調べる
-    render file: 'public/403.html', status: :forbidden if @post.user_id != current_user.id
-    render file: 'public/404.html', status: :not_found unless @post.deleted_at.nil?
-
     @post.content = post_params[:content]
 
     if @post.save
@@ -60,12 +42,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-
-    # TODO: 切り出せないか調べる
-    render file: 'public/403.html', status: :forbidden if @post.user_id != current_user.id
-    render file: 'public/404.html', status: :not_found unless @post.deleted_at.nil?
-
     @post.deleted_at = Time.current
 
     if @post.save
@@ -76,6 +52,18 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_post_by_id
+    @post = Post.find(params[:id])
+  end
+
+  def post_forbidden_filter
+    render file: 'public/403.html', status: :forbidden if @post.user_id != current_user.id
+  end
+
+  def post_not_found_filter
+    render file: 'public/404.html', status: :not_found unless @post.deleted_at.nil?
+  end
 
   def post_params
     params.require(:post).permit(:content)
