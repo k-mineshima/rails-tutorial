@@ -10,6 +10,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -22,6 +24,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",

@@ -9,6 +9,7 @@ import * as ActiveStorage from '@rails/activestorage';
 import 'channels';
 import './jquery';
 import './toastr';
+import './stimulus';
 
 Rails.start();
 Turbolinks.start();
