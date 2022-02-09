@@ -2,9 +2,8 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post_by_id, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy]
   before_action :post_forbidden_filter, only: %i[edit update destroy]
-  before_action :post_not_found_filter, only: %i[show edit update destroy]
 
   def index
     @posts = Post.where(parent_id: nil, deleted_at: nil).includes(:user)
@@ -26,7 +25,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @is_buttons_enabled = @post.user.id == current_user.id
+    @author = @post.user
   end
 
   def edit; end
@@ -53,16 +52,12 @@ class PostsController < ApplicationController
 
   private
 
-  def set_post_by_id
+  def set_post
     @post = Post.find(params[:id])
   end
 
   def post_forbidden_filter
     render file: 'public/403.html', status: :forbidden if @post.user_id != current_user.id
-  end
-
-  def post_not_found_filter
-    render file: 'public/404.html', status: :not_found unless @post.deleted_at.nil?
   end
 
   def post_params

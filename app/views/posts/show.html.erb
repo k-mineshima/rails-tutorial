@@ -9,7 +9,7 @@
         <%= @post.user.nick_name %>
       </div>
       <div class="buttons">
-        <% if @is_buttons_enabled %>
+        <% if @author == current_user %>
           <%= link_to("edit", edit_post_path) %>
           <%= link_to("delete", post_path(@post), method: :delete) %>
         <% end %>
